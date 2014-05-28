@@ -16,11 +16,11 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-import VimperatorrcBuilder
+from VimperatorrcBuilder import VimperatorrcBuilder
 
 def main():
     # create an instance of the class we defined in VimperatorrcBuilder.py
-    builder = VimperatorrcBuilder.VimperatorrcBuilder()
+    builder = VimperatorrcBuilder()
 
     # add the bookmarks you wish
     builder.register_bookmark('a', 'www.archlinux.org')
