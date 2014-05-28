@@ -30,6 +30,7 @@ class VimperatorrcBuilder():
 			'<C-i>': '<Tab>',
 			'<C-f>': '<Right>',
 			'<C-b>': '<Left>',
+			'<C-]>': '<Escape>',
 			}
 
 	vim_filetype = 'vim'
