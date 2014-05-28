@@ -23,6 +23,15 @@ class VimperatorrcBuilder():
 	bang_shortcuts = {}
 	default_engine = 'duckduckgo'
 
+	cli_bindings = {
+			'<C-j>': '<Return>',
+			'<C-p>': '<Up>',
+			'<C-n>': '<Down>',
+			'<C-i>': '<Tab>',
+			'<C-f>': '<Right>',
+			'<C-b>': '<Left>',
+			}
+
 	def __init__(self):
 		pass
 
@@ -59,5 +68,11 @@ class VimperatorrcBuilder():
 		for key in self.bang_shortcuts:
 			output += "noremap '" + self.bang_shortcuts_pfx[0] + key + "' o!" + self.bang_shortcuts[key] + ' \n'
 			output += "noremap '" + self.bang_shortcuts_pfx[1] + key + "' t!" + self.bang_shortcuts[key] + ' \n'
+
+		output += '\n" command line bindings\n'
+		for key in self.cli_bindings:
+			output += 'cnoremap ' + key + ' ' + self.cli_bindings[key] + '\n'
+			output += 'inoremap ' + key + ' ' + self.cli_bindings[key] + '\n'
+
 		return output
 
