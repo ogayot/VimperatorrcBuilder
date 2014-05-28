@@ -32,6 +32,8 @@ class VimperatorrcBuilder():
 			'<C-b>': '<Left>',
 			}
 
+	vim_filetype = 'vim'
+
 	def __init__(self):
 		pass
 
@@ -49,6 +51,14 @@ class VimperatorrcBuilder():
 		""" Set the default search engine (i.e. when you type 'open foo') """
 
 		self.default_engine = engine
+
+	def append_vim_filetype(self, filetype='vim'):
+		""" Set how vim shall interpret the generated file """
+		append_vim_filetype = filetype
+
+	def disable_vim_filetype(self):
+		""" Prevent the output of a vim: line """
+		append_vim_filetype = None
 
 	def get_output(self):
 		''' Return a string containing the full output to redirect '''
@@ -73,6 +83,10 @@ class VimperatorrcBuilder():
 		for key in self.cli_bindings:
 			output += 'cnoremap ' + key + ' ' + self.cli_bindings[key] + '\n'
 			output += 'inoremap ' + key + ' ' + self.cli_bindings[key] + '\n'
+
+		if self.vim_filetype is not None:
+			# XXX dirty hack to avoid vim interpretation of the following line
+			output += '\n" vim' + ': set ft=' + self.vim_filetype + ':\n'
 
 		return output
 
