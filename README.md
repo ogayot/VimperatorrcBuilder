@@ -93,8 +93,9 @@ to work properly*
 generate the configuration
 --------------------------
 
-At last, you can generate the output by calling the method get_output() 
-Redirect this output in your vimperator configuration file if you are okay with.
+At last, you can generate the output by calling the method get_output().
+Redirect this output in your vimperator configuration file if you are okay with
+it.
 
     print(builder.get_output())
 
