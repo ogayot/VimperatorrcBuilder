@@ -53,6 +53,7 @@ def main():
     builder.register_bang_shortcut('r', 'regex')
     builder.register_bang_shortcut('s', 'symbolhound')
     builder.register_bang_shortcut('t', 'tpb')
+    builder.register_bang_shortcut('u', 'ud')
     builder.register_bang_shortcut('w', 'wiki')
     builder.register_bang_shortcut('y', 'youtube')
 
