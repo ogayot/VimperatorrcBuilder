@@ -22,6 +22,13 @@ class VimperatorrcBuilder():
 	bang_shortcuts_pfx = 's', 'S'
 	bang_shortcuts = {}
 	default_engine = 'duckduckgo'
+	toolbars = {
+		'bookmarks': False,
+		'addons': False,
+		'menu': False,
+		'navigation': True,
+		'tabs': True,
+		}
 
 	cli_bindings = {
 			'<C-j>': '<Return>',
@@ -47,6 +54,15 @@ class VimperatorrcBuilder():
 		""" Add a new bang shortcut and bind it to a key-sequence """
 
 		self.bang_shortcuts[seq] = bang_shortcut
+
+	def disable_toolbars(self):
+		""" Disable the toolbars in the gui of the browser """
+
+		self.toolbars['addons'] = False
+		self.toolbars['bookmarks'] = False
+		self.toolbars['menu'] = False
+		self.toolbars['navigation'] = False
+		self.toolbars['tabs'] = False
 
 	def set_default_search_engine(self, engine):
 		""" Set the default search engine (i.e. when you type 'open foo') """
@@ -74,6 +90,9 @@ class VimperatorrcBuilder():
 
 		output += '\n" default search engine\n'
 		output += 'set defsearch=' + self.default_engine + '\n'
+
+		output += '\n" toolbars displayed in the browser\n'
+		output += 'set toolbars=' + ','.join(('no' if not value else '') + key for key,value in self.toolbars.items()) + '\n'
 
 		output += '\n" bang shortcuts\n'
 		for key in self.bang_shortcuts:

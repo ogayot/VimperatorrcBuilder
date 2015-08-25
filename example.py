@@ -59,6 +59,7 @@ def main():
 
     # this is the default behaviour, but it does not hurt to explicit it
     builder.set_default_search_engine('duckduckgo')
+    builder.disable_toolbars()
 
     # display the generated configuration on the standard output
     print(builder.get_output())
